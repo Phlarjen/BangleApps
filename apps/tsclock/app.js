@@ -43,7 +43,7 @@ function renderText(g) {
   g.drawString(minutes, center.x + 32 * scale, center.y + 46 * scale);
 
   g.setFontAlign(1, 0).setFont("Vector", 16 * scale);
-  g.drawString(day2, center.x + 80 * scale, center.y + 42 * scale);
+  g.drawString(day2, center.x + 80 * scale, center.y - 42 * scale);
   g.drawString(month2, center.x + 80 * scale, center.y - 26 * scale);
   g.drawString(day, center.x + 80 * scale, center.y - 10 * scale);
   g.drawString(year, center.x + 80 * scale, center.y + 15 * scale);
