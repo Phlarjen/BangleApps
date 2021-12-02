@@ -23,7 +23,7 @@ function d02(value) {
 }
 
 function renderRect(g) {
-  g.fillRect(center.x + 15 * scale, center.y - 70 * scale, center.x + 160 * scale, center.y + 90 * scale);
+  g.fillRect(center.x + 25 * scale, center.y - 70 * scale, center.x + 160 * scale, center.y + 90 * scale);
 }
 
 function renderText(g) {
