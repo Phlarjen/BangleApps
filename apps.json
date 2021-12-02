@@ -4644,7 +4644,7 @@
   {
     "id": "tsclock",
     "name": "TS Clock",
-    "version": "0.03",
+    "version": "0.04",
     "description": "Test clock based on Nifty B Clock",
     "icon": "app.png",
     "screenshots": [{"url":"screenshot.png"}],
