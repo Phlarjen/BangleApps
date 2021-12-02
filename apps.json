@@ -4640,5 +4640,23 @@
       {"name":"pebble.app.js","url":"pebble.app.js"},
       {"name":"pebble.img","url":"pebble.icon.js","evaluate":true}
     ]
+  },
+  {
+    "id": "tsclock",
+    "name": "TS Clock",
+    "version": "0.01",
+    "description": "Test clock based on Nifty B Clock",
+    "icon": "app.png",
+    "screenshots": [{"url":"screenshot.png"}],
+    "type": "clock",
+    "tags": "clock",
+    "supports": ["BANGLEJS","BANGLEJS2"],
+    "allow_emulator": true,
+    "storage": [
+      {"name":"tsclock.app.js","url":"app.js"},
+      {"name":"tsclock.img","url":"app-icon.js","evaluate":true},
+      {"name":"tsclock.settings.js","url":"settings.js"}
+    ],
+    "data": [{"name":"tsclock.json"}]
   }
 ]
