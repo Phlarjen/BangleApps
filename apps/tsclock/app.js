@@ -1,7 +1,7 @@
 const locale = require("locale");
 const storage = require('Storage');
 
-const is12Hour = (storage.readJSON("settings.json", 1) || {})["12hour"];
+const is12Hour = (storage.readJSON("setting.json", 1) || {})["12hour"];
 const color = (storage.readJSON("tsclock.json", 1) || {})["color"] || 65504 /* yellow */;
 
 
