@@ -5,7 +5,7 @@ const is12Hour = (storage.readJSON("setting.json", 1) || {})["12hour"];
 const color = (storage.readJSON("tsclock.json", 1) || {})["color"] || 65504 /* yellow */;
 
 
-/* screen *********************************************/
+/**********************************************/
 const scale = g.getWidth() / 176;
 
 const screen = {
@@ -23,7 +23,7 @@ function d02(value) {
 }
 
 function renderRect(g) {
-  g.fillRect(center.x + 25 * scale, center.y - 70 * scale, center.x + 88 * scale, center.y + 90 * scale);
+  g.fillRect(center.x + 35 * scale, center.y - 70 * scale, center.x + 88 * scale, center.y + 90 * scale);
 }
 
 function renderText(g) {
@@ -36,23 +36,20 @@ function renderText(g) {
   const year = now.getFullYear();
 
   const month2 = locale.month(now, 3);
-  const day2 = locale.dow(now, 3);
+  const dow = locale.dow(now, 3);
 
-  g.setFontAlign(1, 0).setFont("Vector", 90 * scale);
-  g.drawString(hour, center.x + 32 * scale, center.y - 31 * scale);
-  g.drawString(minutes, center.x + 32 * scale, center.y + 46 * scale);
+  /* draw time */
+  g.setFontAlign(1, 0).setFont("Vector", 95 * scale);
+  g.drawString(hour, center.x + 35 * scale, center.y - 31 * scale);
+  g.drawString(minutes, center.x + 35 * scale, center.y + 46 * scale);
 
-  g.setFontAlign(1, 0).setFont("Vector", 16 * scale);
-  g.drawString(day2, center.x + 80 * scale, center.y - 42 * scale);
-  g.drawString(month2, center.x + 80 * scale, center.y - 26 * scale);
-  g.drawString(day, center.x + 80 * scale, center.y - 10 * scale);
-  g.drawString(year, center.x + 80 * scale, center.y + 15 * scale);
+  /* draw sidebar */
+  g.setFontAlign(1, 0).setFont("Vector", 18 * scale);
+  g.drawString(dow, center.x + 80 * scale, center.y - 42 * scale);
+  g.drawString(day,center.x + 75 * scale, center.y - 20 * scale)
+  g.drawString(month2, center.x + 80 * scale, center.y + 1 * scale);
+  g.drawString(year, center.x + 85 * scale, center.y + 35 * scale);
 
-//  g.drawString(year, center.x + 80 * scale, center.y - 42 * scale);
-//  g.drawString(month, center.x + 80 * scale, center.y - 26 * scale);
-//  g.drawString(day, center.x + 80 * scale, center.y - 10 * scale);
-//  g.drawString(month2, center.x + 80 * scale, center.y + 44 * scale);
-//  g.drawString(day2, center.x + 80 * scale, center.y + 60 * scale);
 }
 
 const buf = Graphics.createArrayBuffer(screen.width, screen.height, 1, {
@@ -72,13 +69,13 @@ function draw() {
   // clear screen area
   g.clearRect(0, 24, g.getWidth(), g.getHeight());
 
-  // render outside text with ellipse
+  // render outside text with sidebar
   buf.clear();
   renderText(buf.setColor(1));
   renderRect(buf.setColor(0));
   g.setColor(color).drawImage(img, 0, 24);
 
-  // render ellipse with inside text
+  // render sidebar with inside text
   buf.clear();
   renderRect(buf.setColor(1));
   renderText(buf.setColor(0));
